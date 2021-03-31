@@ -9,6 +9,9 @@
 
 #pragma once
 
+// temporarily enable debugging while the build is ongoing
+#define DEBUG_LEVEL (DEBUG_ANY)
+
 // Set to 1 for the northern hemisphere, 0 otherwise
 #define NORTHERN_HEMISPHERE 0
 
