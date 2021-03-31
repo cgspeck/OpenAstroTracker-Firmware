@@ -5,6 +5,6 @@ venv
 cmake-*
 CMakeLists.txt
 CMakeListsPrivate.txt
-
 Configuration_local*
 MeadeToWikiOutput.txt
+# Configuration_local*
