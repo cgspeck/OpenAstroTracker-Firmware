@@ -26,15 +26,15 @@
  * @brief Stepper motor type in use on RA and DEC axes.
  * See Constants.hpp for supported options.
  */
-#define RA_STEPPER_TYPE     STEPPER_TYPE_28BYJ48
-#define DEC_STEPPER_TYPE    STEPPER_TYPE_28BYJ48
+#define RA_STEPPER_TYPE     STEPPER_TYPE_NEMA17
+#define DEC_STEPPER_TYPE    STEPPER_TYPE_NEMA17
 
 /**
  * @brief Stepper driver type in use on RA and DEC axes, with associated pin assignments
  * See Constants.hpp for supported DRIVER_TYPE options.
  */
-#define RA_DRIVER_TYPE      DRIVER_TYPE_ULN2003
-#define DEC_DRIVER_TYPE     DRIVER_TYPE_ULN2003
+#define RA_DRIVER_TYPE      DRIVER_TYPE_TMC2209_UART
+#define DEC_DRIVER_TYPE     DRIVER_TYPE_TMC2209_UART
 #define RA_STEPPER_SPEED          400   // Max. Speed = 600 for 28BYJ-48 and 3000 for NEMA17. Defaults = 400 for 28BYJ-48 and 1200 for NEMA17
 #define RA_STEPPER_ACCELERATION   600   // Defaults: 600 for 28BYJ-48, 6000 for NEMA17
 #define DEC_STEPPER_SPEED          600   // Max. Speed = 600 for 28BYJ-48 and 3000 for NEMA17. Defaults = 600 for 28BYJ-48 and 1300 for NEMA17
@@ -42,10 +42,10 @@
 
 // TMC2209 UART settings
 // These settings work only with TMC2209 in UART connection (single wire to TX)
-#define RA_MOTOR_CURRENT_RATING 0       // Current rating of RA motor in mA
-#define RA_OPERATING_CURRENT_SETTING 100  // RA operating setting as a percentage of motor rating
-#define DEC_MOTOR_CURRENT_RATING 0      // Current rating of DEC motor in mA
-#define DEC_OPERATING_CURRENT_SETTING 100  // DEC operating setting as a percentage of motor rating
+#define RA_MOTOR_CURRENT_RATING 1300       // Current rating of RA motor in mA
+#define RA_OPERATING_CURRENT_SETTING 80  // RA operating setting as a percentage of motor rating
+#define DEC_MOTOR_CURRENT_RATING 1300      // Current rating of DEC motor in mA
+#define DEC_OPERATING_CURRENT_SETTING 80  // DEC operating setting as a percentage of motor rating
 
 #define USE_VREF 0    //By default Vref is ignored when using UART to specify rms current. Only enable if you know what you are doing.
 
@@ -65,7 +65,7 @@
  * @brief Automated azimuth/altitude adjustment configuration.
  * Set AZIMUTH_ALTITUDE_MOTORS to 1 to enable, 0 or #undef to exclude AZ/ALT from configuration.
  */
-#define AZIMUTH_ALTITUDE_MOTORS  0
+#define AZIMUTH_ALTITUDE_MOTORS  1
 #define AZ_STEPPER_TYPE     STEPPER_TYPE_28BYJ48
 #define ALT_STEPPER_TYPE    STEPPER_TYPE_28BYJ48
 #define AZ_DRIVER_TYPE      DRIVER_TYPE_ULN2003
