@@ -74,3 +74,5 @@
 // AutoPA Addon configuration
 // Define whether we have the AutoPA add on or not. Currently: No AutoPA
 // No AutoPA settings
+#define DEBUG_LEVEL     (DEBUG_ANY)
+#define LCD_BUTTON_TEST 1
