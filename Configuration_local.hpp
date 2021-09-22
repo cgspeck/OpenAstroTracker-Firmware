@@ -3,8 +3,6 @@
 // firmware V1.9.30 and later.
 // Save this as Configuration_local.hpp in the folder where you placed the firmware code.
 
-// ONLY RA + DEC + Screen set up
-
 // We live in the Southern Hemisphere
 #define NORTHERN_HEMISPHERE 0
 
@@ -72,7 +70,26 @@
 
 ////////////////////////////////
 // AutoPA Addon configuration
-// Define whether we have the AutoPA add on or not. Currently: No AutoPA
-// No AutoPA settings
-#define DEBUG_LEVEL     (DEBUG_ANY)
-#define LCD_BUTTON_TEST 1
+// Define whether we have the AutoPA add on or not. Currently: Full AutoPA is installed
+
+// Using AutoPA V1.0.
+
+// Using the 28BYJ-48 (Bipolar) stepper for AZ
+#define AZ_STEPPER_TYPE STEPPER_TYPE_28BYJ48
+
+// Using the TMC2209-UART driver for AZ stepper motor
+#define AZ_DRIVER_TYPE DRIVER_TYPE_TMC2209_UART
+
+// Define AZ stepper motor power settings
+#define AZ_MOTOR_CURRENT_RATING      300  // mA
+#define AZ_OPERATING_CURRENT_SETTING 100  // %
+
+// Using the 28BYJ-48 (Bipolar) stepper for ALT
+#define ALT_STEPPER_TYPE STEPPER_TYPE_28BYJ48
+
+// Using the TMC2209-UART driver for ALT stepper motor
+#define ALT_DRIVER_TYPE DRIVER_TYPE_TMC2209_UART
+
+// Define ALT stepper motor power settings
+#define ALT_MOTOR_CURRENT_RATING      300  // mA
+#define ALT_OPERATING_CURRENT_SETTING 100  // %
