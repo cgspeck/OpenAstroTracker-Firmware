@@ -60,8 +60,8 @@
 
 ////////////////////////////////
 // GPS Addon configuration
-// Define whether we have the GPS addon or not. Currently: No GPS
-#define USE_GPS 0
+// Define whether we have the GPS addon or not. Currently: Has GPS
+#define USE_GPS 1
 
 ////////////////////////////////
 // Digital Level Addon configuration
