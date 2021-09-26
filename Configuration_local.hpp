@@ -60,13 +60,13 @@
 
 ////////////////////////////////
 // GPS Addon configuration
-// Define whether we have the GPS addon or not. Currently: Has GPS
+// Define whether we have the GPS addon or not. Currently: Enable GPS
 #define USE_GPS 1
 
 ////////////////////////////////
 // Digital Level Addon configuration
-// Define whether we have the Digital Level or not. Currently: No Digital Level
-#define USE_GYRO_LEVEL 0
+// Define whether we have the Digital Level or not. Currently: Enable Digital Level
+#define USE_GYRO_LEVEL 1
 
 ////////////////////////////////
 // AutoPA Addon configuration
