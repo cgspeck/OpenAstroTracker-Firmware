@@ -65,8 +65,8 @@
 
 ////////////////////////////////
 // Digital Level Addon configuration
-// Define whether we have the Digital Level or not. Currently: Enable Digital Level
-#define USE_GYRO_LEVEL 1
+// Define whether we have the Digital Level or not. Currently: Disable Digital Level
+#define USE_GYRO_LEVEL 0
 
 ////////////////////////////////
 // AutoPA Addon configuration
