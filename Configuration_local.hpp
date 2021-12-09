@@ -26,7 +26,7 @@
 #define RA_SLEW_MICROSTEPPING        8
 #define RA_TRACKING_MICROSTEPPING    64
 // TMC2209 Stealth Mode (spreadCycle) - When set to 0, tracking is more precise, but noisy (high-pitched sound). When set to 1, they are silent.
-#define RA_UART_STEALTH_MODE 0
+#define RA_UART_STEALTH_MODE 1
 
 // Using the 16 tooth gear (recommended) for RA belt
 #define RA_PULLEY_TEETH 16
@@ -48,7 +48,7 @@
 #define DEC_SLEW_MICROSTEPPING        16
 #define DEC_GUIDE_MICROSTEPPING       64
 // TMC2209 Stealth Mode (spreadCycle) - When set to 0, tracking is more precise, but noisy (high-pitched sound). When set to 1, they are silent.
-#define DEC_UART_STEALTH_MODE 0
+#define DEC_UART_STEALTH_MODE 1
 
 // Using the 16 tooth gear (recommended) for DEC belt
 #define DEC_PULLEY_TEETH 16
