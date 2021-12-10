@@ -105,7 +105,9 @@
         #define RA_UART_STEALTH_MODE 0
     #endif
 #elif (RA_DRIVER_TYPE == DRIVER_TYPE_A4988_GENERIC) || (RA_DRIVER_TYPE == DRIVER_TYPE_TMC2209_STANDALONE)
-    #define RA_SLEW_MICROSTEPPING     8  // Microstep mode set by MS pin strapping. Use the same microstep mode for both slewing & tracking
+    #ifndef RA_SLEW_MICROSTEPPING
+        #define RA_SLEW_MICROSTEPPING 8  // Microstep mode set by MS pin strapping. Use the same microstep mode for both slewing & tracking
+    #endif
     #define RA_TRACKING_MICROSTEPPING RA_SLEW_MICROSTEPPING
 #elif (RA_DRIVER_TYPE == DRIVER_TYPE_ULN2003)
     #define RA_SLEW_MICROSTEPPING     2  // The (default) half-step mode used for slewing RA axis
@@ -125,8 +127,10 @@
         #define DEC_UART_STEALTH_MODE 0
     #endif
 #elif (DEC_DRIVER_TYPE == DRIVER_TYPE_A4988_GENERIC) || (DEC_DRIVER_TYPE == DRIVER_TYPE_TMC2209_STANDALONE)
-    #define DEC_SLEW_MICROSTEPPING                                                                                                         \
-        16  // Only UART drivers support dynamic switching. Use the same microstep mode for both slewing & guiding
+    #ifndef DEC_SLEW_MICROSTEPPING
+        #define DEC_SLEW_MICROSTEPPING                                                                                                     \
+            16  // Only UART drivers support dynamic switching. Use the same microstep mode for both slewing & guiding
+    #endif
     #define DEC_GUIDE_MICROSTEPPING DEC_SLEW_MICROSTEPPING
 #elif (DEC_DRIVER_TYPE == DRIVER_TYPE_ULN2003)
     #define DEC_SLEW_MICROSTEPPING  2  // Runs in half-step mode always
@@ -147,8 +151,7 @@
 
     #define RA_STALL_VALUE  100  // adjust this value if the RA autohoming sequence often false triggers, or triggers too late
     #define DEC_STALL_VALUE 10   // adjust this value if the RA autohoming sequence often false triggers, or triggers too late
-    #define USE_AUTOHOME    0    // Autohome with TMC2209 stall detection:  ON = 1  |  OFF = 0
-    //                  ^^^ leave at 0 for now, doesnt work properly yet
+
     #ifndef RA_AUDIO_FEEDBACK
         #define RA_AUDIO_FEEDBACK                                                                                                          \
             0  // If one of these are set to 1, the respective driver will shut off the stealthchop mode, resulting in a audible whine
@@ -236,7 +239,9 @@
 #if RA_STEPPER_TYPE == STEPPER_TYPE_28BYJ48
     #define RA_PULSE_MULTIPLIER 1.0f
 #elif RA_STEPPER_TYPE == STEPPER_TYPE_NEMA17
-    #define RA_PULSE_MULTIPLIER 1.5f
+    #ifndef RA_PULSE_MULTIPLIER
+        #define RA_PULSE_MULTIPLIER 1.5f
+    #endif
 #else
     #error New RA Stepper type? Add it here...
 #endif
@@ -244,7 +249,9 @@
 #if DEC_STEPPER_TYPE == STEPPER_TYPE_28BYJ48
     #define DEC_PULSE_MULTIPLIER 1.0f
 #elif DEC_STEPPER_TYPE == STEPPER_TYPE_NEMA17
-    #define DEC_PULSE_MULTIPLIER 1.0f
+    #ifndef DEC_PULSE_MULTIPLIER
+        #define DEC_PULSE_MULTIPLIER 1.0f
+    #endif
 #else
     #error New DEC Stepper type? Add it here...
 #endif
@@ -368,6 +375,10 @@
     #if (AZ_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
         #define AZ_RMSCURRENT AZ_MOTOR_CURRENT_RATING *(AZ_OPERATING_CURRENT_SETTING / 100.0f) / 1.414f
 
+        #ifndef AZ_MOTOR_HOLD_SETTING
+            #define AZ_MOTOR_HOLD_SETTING 100
+        #endif
+
         #define AZ_STALL_VALUE 10  // adjust this value if the RA autohoming sequence often false triggers, or triggers too late
 
         #ifndef USE_VREF
@@ -452,6 +463,10 @@
     // These settings work only with TMC2209 in UART connection (single wire to TX)
     #if (ALT_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
         #define ALT_RMSCURRENT ALT_MOTOR_CURRENT_RATING *(ALT_OPERATING_CURRENT_SETTING / 100.0f) / 1.414f
+
+        #ifndef ALT_MOTOR_HOLD_SETTING
+            #define ALT_MOTOR_HOLD_SETTING 100
+        #endif
 
         #define ALT_STALL_VALUE 10  // adjust this value if the RA autohoming sequence often false triggers, or triggers too late
 
@@ -587,9 +602,6 @@
 #if !defined(SUPPORT_SERIAL_CONTROL)
     #define SUPPORT_SERIAL_CONTROL 1
 #endif
-
-// This is set to 1 for boards that do not support interrupt timers
-#define RUN_STEPPERS_IN_MAIN_LOOP 0
 
 // The port number to access OAT control over WiFi (ESP32 only)
 #define WIFI_PORT 4030

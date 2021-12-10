@@ -185,18 +185,6 @@
     #warning Configuration does not support Focus. Use at own risk.
 #endif
 
-// Interfaces
-#if (BLUETOOTH_ENABLED == 0)
-// Baseline configuration without Bluetooth is valid
-#elif defined(ESP32)
-    // Bluetooth is only supported on ESP32
-    #if !defined(BLUETOOTH_DEVICE_NAME)
-        #error Bluetooth device name must be provided
-    #endif
-#else
-    #error Unsupported Bluetooth configuration. Use at own risk.
-#endif
-
 #if (WIFI_ENABLED == 0)
 // Baseline configuration without WiFi is valid
 #elif defined(ESP32)
@@ -256,7 +244,8 @@
         // Required pin assignments missing
         #error Missing pin assignments for configured DEC DRIVER_TYPE_A4988_GENERIC or DRIVER_TYPE_TMC2209_STANDALONE driver
     #endif
-    #if (!defined(DEC_MS0_PIN) || !defined(DEC_MS1_PIN) || !defined(DEC_MS2_PIN)) && (BOARD != BOARD_AVR_MKS_GEN_L_V1)
+    #if (!defined(DEC_MS0_PIN) || !defined(DEC_MS1_PIN) || !defined(DEC_MS2_PIN))                                                          \
+        && (BOARD != BOARD_AVR_MKS_GEN_L_V1 && BOARD != BOARD_AVR_RAMPS)
         #warning Missing pin assignments for MS pins
     #endif
 #elif (DEC_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
@@ -280,7 +269,8 @@
         // Required pin assignments missing
         #error Missing pin assignments for configured RA DRIVER_TYPE_A4988_GENERIC or DRIVER_TYPE_TMC2209_STANDALONE driver
     #endif
-    #if (!defined(RA_MS0_PIN) || !defined(RA_MS1_PIN) || !defined(RA_MS2_PIN)) && (BOARD != BOARD_AVR_MKS_GEN_L_V1)
+    #if (!defined(RA_MS0_PIN) || !defined(RA_MS1_PIN) || !defined(RA_MS2_PIN))                                                             \
+        && (BOARD != BOARD_AVR_MKS_GEN_L_V1 && BOARD != BOARD_AVR_RAMPS)
         #warning Missing pin assignments for MS pins
     #endif
 #elif (RA_DRIVER_TYPE == DRIVER_TYPE_TMC2209_UART)
